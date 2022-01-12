@@ -24,6 +24,14 @@ var app = (function () {
     function safe_not_equal(a, b) {
         return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
     }
+    let src_url_equal_anchor;
+    function src_url_equal(element_src, url) {
+        if (!src_url_equal_anchor) {
+            src_url_equal_anchor = document.createElement('a');
+        }
+        src_url_equal_anchor.href = url;
+        return element_src === src_url_equal_anchor.href;
+    }
     function is_empty(obj) {
         return Object.keys(obj).length === 0;
     }
@@ -38,6 +46,12 @@ var app = (function () {
     }
     function element(name) {
         return document.createElement(name);
+    }
+    function text(data) {
+        return document.createTextNode(data);
+    }
+    function space() {
+        return text(' ');
     }
     function attr(node, attribute, value) {
         if (value == null)
@@ -331,6 +345,12 @@ var app = (function () {
     	let div1;
     	let div0;
     	let h1;
+    	let t1;
+    	let div2;
+    	let canvas;
+    	let t2;
+    	let script;
+    	let script_src_value;
 
     	const block = {
     		c: function create() {
@@ -338,14 +358,27 @@ var app = (function () {
     			div1 = element("div");
     			div0 = element("div");
     			h1 = element("h1");
-    			h1.textContent = `${/*name*/ ctx[0]}`;
-    			add_location(h1, file, 7, 3, 107);
-    			attr_dev(div0, "class", "card title-box svelte-17f9nsg");
-    			add_location(div0, file, 6, 2, 75);
+    			h1.textContent = `${/*app*/ ctx[0]}`;
+    			t1 = space();
+    			div2 = element("div");
+    			canvas = element("canvas");
+    			t2 = space();
+    			script = element("script");
+    			add_location(h1, file, 7, 3, 115);
+    			attr_dev(div0, "class", "card title-box");
+    			add_location(div0, file, 6, 2, 83);
     			attr_dev(div1, "class", "container");
-    			add_location(div1, file, 5, 1, 49);
-    			attr_dev(main, "class", "svelte-17f9nsg");
-    			add_location(main, file, 4, 0, 41);
+    			add_location(div1, file, 5, 1, 57);
+    			attr_dev(canvas, "id", "staff");
+    			attr_dev(canvas, "width", "1200px");
+    			attr_dev(canvas, "height", "500px");
+    			add_location(canvas, file, 12, 2, 173);
+    			attr_dev(div2, "class", "center");
+    			add_location(div2, file, 11, 1, 150);
+    			if (!src_url_equal(script.src, script_src_value = "staff.js")) attr_dev(script, "src", script_src_value);
+    			add_location(script, file, 16, 1, 246);
+    			attr_dev(main, "class", "svelte-tcjsct");
+    			add_location(main, file, 4, 0, 49);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -355,6 +388,11 @@ var app = (function () {
     			append_dev(main, div1);
     			append_dev(div1, div0);
     			append_dev(div0, h1);
+    			append_dev(main, t1);
+    			append_dev(main, div2);
+    			append_dev(div2, canvas);
+    			append_dev(main, t2);
+    			append_dev(main, script);
     		},
     		p: noop,
     		i: noop,
@@ -378,24 +416,24 @@ var app = (function () {
     function instance($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('App', slots, []);
-    	let name = "Death";
+    	let app = "Rhythm Clapper";
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<App> was created with unknown prop '${key}'`);
     	});
 
-    	$$self.$capture_state = () => ({ name });
+    	$$self.$capture_state = () => ({ app });
 
     	$$self.$inject_state = $$props => {
-    		if ('name' in $$props) $$invalidate(0, name = $$props.name);
+    		if ('app' in $$props) $$invalidate(0, app = $$props.app);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [name];
+    	return [app];
     }
 
     class App extends SvelteComponentDev {

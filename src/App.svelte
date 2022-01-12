@@ -1,13 +1,20 @@
 <script>
-	let name = "Death";
+	let app = "Rhythm Clapper";
 </script>
 
 <main>
 	<div class="container">
 		<div class="card title-box">
-			<h1>{name}</h1>
+			<h1>{app}</h1>
 		</div>
 	</div>
+	
+	<div class="center">
+		<canvas id="staff" width="1200px" height="500px">
+		</canvas>
+	</div>
+	
+	<script src="staff.js"></script>
 </main>
 
 <style>
@@ -16,13 +23,6 @@
 		padding: 1em;
 		max-width: 240px;
 		margin: 0 auto;
-	}
-	
-	.title-box {
-		background-color: #FFFF00;
-		font-size: 7em;
-		font-weight: 400;
-		padding: 4em;
 	}
 	/*
 	h1 {

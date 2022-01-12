@@ -10,6 +10,13 @@ html, body {
     margin: 0 auto; /* Center the staff. */
 }
 
+.title-box {
+	background-color: #DED226;
+	font-size: 7em;
+	font-weight: 500;
+	padding: 3rem 3rem;
+}
+
 body {
 	color: #333;
 	background-color: #BABABA;
