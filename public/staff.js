@@ -63,4 +63,4 @@ const drawRhythm = async (rhythm) => {
 };
 
 drawStaffLines();
-//drawRhythm(rhythms[3]);
+drawRhythm(rhythms[3]);
